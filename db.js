@@ -15,7 +15,7 @@ const Visitor = db.define('visitors', {
         allowNull: false,
     },
     phoneno: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true
     },
@@ -26,16 +26,20 @@ const Visitor = db.define('visitors', {
     host: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    checkintime: {
+        type:Sequelize.STRING,
+        allowNull: false
     }
 })
 
-const Host = db.define('host', {
+const Host = db.define('hosts', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
     },
     phoneno: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true
     },
