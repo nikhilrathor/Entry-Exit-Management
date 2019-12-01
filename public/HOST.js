@@ -29,7 +29,7 @@ $(function () {
                 email,
                 function (addedHost) {
                     if (typeof addedHost.name !== "undefined")
-                        window.alert("Meeting Hosted for" + addedHost.name)
+                        window.alert("Meeting Hosted for " + addedHost.name)
                     else
                         window.alert("Phone Number already registered to other host")
                 }

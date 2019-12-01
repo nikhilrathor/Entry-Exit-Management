@@ -42,7 +42,7 @@ $(function () {
                 checkintime,
                 function (addedVisitor) {
                     if (typeof addedVisitor.name !== "undefined")
-                        window.alert(addedVisitor.name + "is marked checkedin for the meeting")
+                        window.alert(addedVisitor.name + " marked checkedin for the meeting")
                     else
                         window.alert("Phone Number already registered to other visitor")
                 }
