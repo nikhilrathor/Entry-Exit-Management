@@ -15,32 +15,15 @@ route.get('/', (req, res) => {
 })
 
 route.post('/', (req, res) => {
-    /*if((req.body.name).length == 0)
-    {
-        return res.status(403).send({
-            error: "Name cannot be empty"
-        })
-    }
-    if(!(req.body.phoneno.match(/^\d{10}$/)))
-    {
-        return res.status(403).send({
-            error: "Phone Number is not valid"
-        })
-    }
-    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email)))
-    {
-        return res.status(403).send({
-            error: "Email Address is not valid"
-        })
-    }*/
     Host.create({
         name: req.body.name,
-        phoneno: parseInt(req.body.phoneno),
+        phoneno: req.body.phoneno,
         email: req.body.email
     }).then((host) => {
         res.status(201).send(host)
     }).catch((error) => {
-        res.status(501).send({
+        console.log(error)
+        res.status(201).send({
             error: "Error adding host"
         })
     })
