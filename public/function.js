@@ -8,35 +8,35 @@ function addhost (name, phoneno, email, done) {
     })
 }
 
-function addvisitor (name, phoneno, email, hostname, done) {
-    let hostphoneno,hostemail;
-    fetchHosts(function (hosts) {
-        for (host of hosts) {
-            if(host.name === hostname){
-                hostphoneno = host.phoneno
-                hostemail = host.email
-                break
-            }
-        }
-    })
-    console.log(hostphoneno, hostemail)
-
+function addvisitor (name, phoneno, email, hostphoneno, checkintime, done) {
     $.post('/api/visitors/checkin', {
         name: name,
         phoneno: phoneno,
         email: email,
-        host: hostname
+        host: hostphoneno,
+        checkintime: checkintime
     }, function (data) {
         done(data)
     })
 }
 
-function removevisitor (name, phoneno, email, hostname, done) {
-    $.post('/api/visitors/checkout', {
+function removevisitor (name, phoneno, email, hostphone, done) {
+    $.post('/api/visitors/checkoutemail', {
         name: name,
         phoneno: phoneno,
         email: email,
-        host: hostname
+        host: hostphone,
+    }, function (data) {
+        done(data)
+    })
+}
+
+function validate(name, phoneno, email, hostphone, done){
+    $.post('/api/visitors/validate', {
+        name: name,
+        phoneno: phoneno,
+        email: email,
+        host: hostphone,
     }, function (data) {
         done(data)
     })
@@ -50,6 +50,8 @@ function fetchHosts (done) {
 
 function createHostList (host) {
     return $(`
-    <option value="${host.name}">${host.name}</option>`
+    <option value="${host.phoneno}">
+    <h2>${host.name}</h2><br>
+    <h4>(${host.phoneno})</h4></option>`
         )
 }
