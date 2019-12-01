@@ -4,6 +4,8 @@ const route = require('express').Router()
 const nodemailer = require('nodemailer')
 const Nexmo = require('nexmo')
 
+
+
 require('dotenv').config()
 
 
@@ -61,9 +63,7 @@ route.post('/checkin', (req, res) => {
             console.log(`Message failed with error: ${info.messages[0]['error-text']}`)
           }
         }
-      })
-
-
+      })     
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
@@ -73,7 +73,7 @@ route.post('/checkin', (req, res) => {
           user: process.env.EMAIL,
           pass: process.env.PASS
         }
-      });
+      }); 
       var mailOptions = {
         from: process.env.EMAIL,
         to: host.email,
@@ -131,6 +131,8 @@ route.post('/checkoutemail', (req, res) => {
         res.status(201).send((visitors).toString())
         if ((visitors).toString() === "1") {
 
+          var txt = "You have successfully checked out: \n\n" + "Name : " + name + "\n" + "Phone : " + phoneno + "\n" + "Check-in time : " + checkintime + "\n" + "Check-out time : " + checkouttime + "\n" + "Host name : " + host +"\nAddress: Block B, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309"
+          
           var transporter = nodemailer.createTransport({
             service: 'gmail',
             host: 'smtp.gmail.com',
@@ -141,8 +143,6 @@ route.post('/checkoutemail', (req, res) => {
               pass: process.env.PASS
             }
           });
-
-          var txt = "You have successfully checked out: \n\n" + "Name : " + name + "\n" + "Phone : " + phoneno + "\n" + "Check-in time : " + checkintime + "\n" + "Check-out time : " + checkouttime + "\n" + "Host name : " + host +"\nAddress: Block B, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309"
           var mailOptions = {
             from: process.env.EMAIL,
             to: email,

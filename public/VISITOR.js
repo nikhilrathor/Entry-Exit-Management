@@ -42,7 +42,7 @@ $(function () {
                 checkintime,
                 function (addedVisitor) {
                     if (typeof addedVisitor.name !== "undefined")
-                        window.alert("Added " + addedVisitor.name + " to Database")
+                        window.alert(addedVisitor.name + "is marked checkedin for the meeting")
                     else
                         window.alert("Phone Number already registered to other visitor")
                 }
@@ -87,7 +87,7 @@ $(function () {
                             hostphoneno,
                             function (removedVisitor) {
                                 if(removedVisitor === "1")
-                                    window.alert("Removed from Database")
+                                    window.alert("Checked Out from the Office")
                             }
                         )
                     }
