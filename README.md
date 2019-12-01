@@ -7,11 +7,7 @@
 - [Usage](#usage)
   - [Installation](#installation)
 - [File Structure](#file-structure)
-- [Guideline](#guideline)
 - [Gallery](#gallery)
-- [Credit/Acknowledgment](#creditacknowledgment)
-- [License](#license)
-- [Logo Credit](#logo-credit)
 
 ## About
 
